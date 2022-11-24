@@ -18,7 +18,6 @@ function SignIn(props) {
     try {
       var provider = new GoogleAuthProvider();
       let res = await signInWithPopup(auth, provider);
-      console.log(res);
       const user = res.user;
       const q = query(collection(db, "users"), where("uid", "==", user.uid));
       const docs = await getDocs(q);
@@ -37,6 +36,7 @@ function SignIn(props) {
 
   return (
     <>
+      {console.log(props.user)}
       <Button onClick={signInWithGoogle}>Sign-in with Google</Button>
     </>
   );
